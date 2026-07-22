@@ -101,7 +101,7 @@ export class ApolloBase {
     TVariables extends OperationVariables = EmptyObject,
   >(
     options: Apollo.WatchFragmentOptions<TFragmentData, TVariables>,
-  ): Observable<Apollo.WatchFragmentResult<TFragmentData>> {
+  ): Observable<Apollo.WatchFragmentResult<TFragmentData | null>> {
     const { useZone, ...opts } = options;
     const obs = this.ensureClient().watchFragment<TFragmentData, TVariables>({ ...opts });
 
