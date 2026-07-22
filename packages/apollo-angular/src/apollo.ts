@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Inject, Injectable, NgZone, Optional } from '@angular/core';
 import type { OperationVariables } from '@apollo/client';
 import { ApolloClient } from '@apollo/client';
+import { ErrorPolicy } from '@apollo/client/core';
 import { QueryRef } from './query-ref';
 import { APOLLO_FLAGS, APOLLO_NAMED_OPTIONS, APOLLO_OPTIONS } from './tokens';
 import type { EmptyObject, Flags, NamedOptions } from './types';
@@ -18,7 +19,10 @@ export declare namespace Apollo {
     TVariables extends OperationVariables = EmptyObject,
   > = ApolloClient.QueryOptions<TData, TVariables>;
 
-  export type QueryResult<TData = unknown> = ApolloClient.QueryResult<TData>;
+  export type QueryResult<
+    TData = unknown,
+    TErrorPolicy extends ErrorPolicy | undefined = undefined,
+  > = ApolloClient.QueryResult<TData, TErrorPolicy>;
 
   export type MutateOptions<
     TData = unknown,
