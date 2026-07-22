@@ -134,7 +134,7 @@ importers:
         specifier: ^20.3.0
         version: 20.3.24(@angular/common@20.3.24(@angular/core@20.3.24(@angular/compiler@20.3.24)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.24(@angular/compiler@20.3.24)(rxjs@7.8.2))(@angular/platform-browser@20.3.24(@angular/common@20.3.24(@angular/core@20.3.24(@angular/compiler@20.3.24)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.24(@angular/compiler@20.3.24)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@apollo/client':
-        specifier: 4.2.7
+        specifier: ^4.2.7
         version: 4.2.7(graphql@16.14.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rxjs@7.8.2)
       apollo-angular:
         specifier: workspace:*
