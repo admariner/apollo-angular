@@ -7,8 +7,8 @@ type CompleteFragment<TData> = {
 } & GetDataState<TData, 'complete'>;
 
 type ForWatchFragment<TData> = OperatorFunction<
-  ApolloClient.WatchFragmentResult<TData | null>,
-  ApolloClient.WatchFragmentResult<TData | null> & CompleteFragment<NonNullable<TData>>
+  ApolloClient.WatchFragmentResult<TData>,
+  CompleteFragment<TData>
 >;
 
 /**
@@ -54,10 +54,5 @@ export const onlyComplete = onlyCompleteData;
  * Same as `onlyCompleteData()` but for `Apollo.watchFragment()`.
  */
 export function onlyCompleteFragment<TData>(): ForWatchFragment<TData> {
-  return filter(
-    (
-      result,
-    ): result is ApolloClient.WatchFragmentResult<TData | null> &
-      CompleteFragment<NonNullable<TData>> => result.dataState === 'complete',
-  );
+  return filter((result): result is CompleteFragment<TData> => result.dataState === 'complete');
 }
