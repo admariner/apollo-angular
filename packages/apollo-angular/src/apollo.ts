@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Inject, Injectable, NgZone, Optional } from '@angular/core';
 import type { OperationVariables } from '@apollo/client';
-import { ApolloClient, ErrorPolicy } from '@apollo/client';
+import { ApolloClient } from '@apollo/client';
 import { QueryRef } from './query-ref';
 import { APOLLO_FLAGS, APOLLO_NAMED_OPTIONS, APOLLO_OPTIONS } from './tokens';
 import type { EmptyObject, Flags, NamedOptions } from './types';
@@ -18,10 +18,7 @@ export declare namespace Apollo {
     TVariables extends OperationVariables = EmptyObject,
   > = ApolloClient.QueryOptions<TData, TVariables>;
 
-  export type QueryResult<
-    TData = unknown,
-    TErrorPolicy extends ErrorPolicy | undefined = undefined,
-  > = ApolloClient.QueryResult<TData, TErrorPolicy>;
+  export type QueryResult<TData = unknown> = ApolloClient.QueryResult<TData>;
 
   export type MutateOptions<
     TData = unknown,
@@ -100,7 +97,7 @@ export class ApolloBase {
     TVariables extends OperationVariables = EmptyObject,
   >(
     options: Apollo.WatchFragmentOptions<TFragmentData, TVariables>,
-  ): Observable<Apollo.WatchFragmentResult<TFragmentData | null>> {
+  ): Observable<Apollo.WatchFragmentResult<TFragmentData>> {
     const { useZone, ...opts } = options;
     const obs = this.ensureClient().watchFragment<TFragmentData, TVariables>({ ...opts });
 
